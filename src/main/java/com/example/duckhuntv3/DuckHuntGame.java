@@ -10,8 +10,10 @@ import javafx.stage.Stage;
 
 
 public class DuckHuntGame extends Application {
+    public static final int screenx = 256*4;
+    public static final int screeny = 240*4;
     public static BorderPane mainBP = new BorderPane();
-    public static Canvas gameCanvas = new Canvas(256*4, 240*4);
+    public static Canvas gameCanvas = new Canvas(screenx, screeny);
 
 
 

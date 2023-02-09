@@ -20,7 +20,7 @@ public class Duck extends Circle {
     public Duck(){
         pos = new float[2];
         pos[0] = new Random().nextFloat(800-125,1000-125);
-        pos[1] = new Random().nextFloat(100,125);
+        pos[1] = new Random().nextFloat(DuckHuntGame.screeny-250,DuckHuntGame.screeny-200);
         speed = new Random().nextFloat(5/2,10/2);
         duckMovement.start();
     }
@@ -39,11 +39,16 @@ public class Duck extends Circle {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                if (new Random().nextInt(1000) == 5){
+                if (new Random().nextInt(100) == 5){
                     if (speed>0)
-                        speed = new Random().nextInt(-5,0);
+                        speed = new Random().nextInt(-8,-2);
                     else
-                        speed = new Random().nextInt(0,5);
+                        speed = new Random().nextInt(2,8);
+                    if(pos[0] > DuckHuntGame.screenx) {
+                        speed *= -1;
+                    }
+                    if (pos[0] < 0)
+                        speed *= -1;
                 }
             }
 
