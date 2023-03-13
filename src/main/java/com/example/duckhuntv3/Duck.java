@@ -13,7 +13,7 @@ public class Duck extends Circle {
     boolean deadFlag = false;
     void draw(){
         DuckHuntGame.gameCanvas.getGraphicsContext2D().setFill(Color.CYAN);
-        DuckHuntGame.gameCanvas.getGraphicsContext2D().fillRect(0,0,255*4,255*4);
+        DuckHuntGame.gameCanvas.getGraphicsContext2D().fillRect(0,0,300*4,300*4);
         DuckHuntGame.gameCanvas.getGraphicsContext2D().setFill(Color.GREEN);
         DuckHuntGame.gameCanvas.getGraphicsContext2D().fillOval(this.pos[0],this.pos[1],32/0.25,32/0.25);
     }
@@ -44,11 +44,15 @@ public class Duck extends Circle {
                         speed = new Random().nextInt(-8,-2);
                     else
                         speed = new Random().nextInt(2,8);
-                    if(pos[0] > DuckHuntGame.screenx) {
-                        speed *= -1;
-                    }
-                    if (pos[0] < 0)
-                        speed *= -1;
+
+                }
+                if(pos[0] > DuckHuntGame.screenx-getRadius()) {
+                    speed *= new Random().nextInt(-8,-2);
+                    pos[0] = DuckHuntGame.screenx;
+                }
+                if (pos[0] < getRadius()) {
+                    speed *= new Random().nextInt(2,8);
+                    pos[0] = 0;
                 }
             }
 
